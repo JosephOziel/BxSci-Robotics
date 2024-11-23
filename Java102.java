@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Java102 {
     public static void main(String[] args) {
         System.out.println("-----------------Point Class-----------------");
@@ -21,5 +23,28 @@ public class Java102 {
         Point rotatedPoint = p1.rotate(theta);
         System.out.println("Original point: " + p1);
         System.out.println("Rotated point: " + rotatedPoint);
+
+        System.out.println("-----------------Grid Class-----------------");
+        Grid<Integer> grid = new Grid<Integer>(3, 0);
+        grid.set(0,0,4); grid.set(1,1,2); grid.set(2,2,7);
+        ArrayList<Integer> diag = grid.diagonal();
+        System.out.println("Grid:\n" + grid);
+        System.out.println("Diagonal: " + diag);
+        System.out.println("Max SideLength: " + Grid.maxSideLength() + "\n");
+        Grid<Integer> grid1 = new Grid<Integer>(7, 0);
+        System.out.println("New Grid:\n" + grid1);
+        System.out.println("Max SideLength: " + Grid.maxSideLength());
+
+        System.out.println("-----------------Grid Class-----------------");
+        Point point1 = new Point(0, 0);
+        Point point2 = new Point(6, 0);
+        Point point3 = new Point(3, 6);
+        Circle c = Circle.fromPoints(point1, point2, point3);
+        System.out.println("Circle: " + c);
+        RightTriangle triangle1 = new RightTriangle(new Point(0, 0), 3, 4);
+        RightTriangle triangle2 = new RightTriangle(new Point(1, 1), 6, 8);
+        System.out.println("Triangle 1: " + triangle1);
+        System.out.println("Triangle 2: " + triangle2);
+        System.out.println("Are they similar? " + RightTriangle.similar(triangle1, triangle2));
     }
 }
