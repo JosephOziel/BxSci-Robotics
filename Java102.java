@@ -1,6 +1,22 @@
 import java.util.ArrayList;
 
 public class Java102 {
+    public static void returnAll(LibraryItem[] items) {
+        for (int i = 0; i < items.length; i++) {
+            items[i].returnItem();
+        }
+    }
+
+    public static ArrayList<LibraryItem> availableItems(LibraryItem[] items) {
+        ArrayList<LibraryItem> availible = new ArrayList<LibraryItem>();
+        for (LibraryItem item : items) {
+            if (item.isCheckedOut) {
+                availible.add(item);
+            }
+        }
+        return availible;
+    }
+
     public static void main(String[] args) {
         System.out.println("-----------------Point Class-----------------");
         Point point = new Point(4, 3);
@@ -35,7 +51,7 @@ public class Java102 {
         System.out.println("New Grid:\n" + grid1);
         System.out.println("Max SideLength: " + Grid.maxSideLength());
 
-        System.out.println("-----------------Grid Class-----------------");
+        System.out.println("-----------------Shape Interface-----------------");
         Point point1 = new Point(0, 0);
         Point point2 = new Point(6, 0);
         Point point3 = new Point(3, 6);
@@ -46,5 +62,14 @@ public class Java102 {
         System.out.println("Triangle 1: " + triangle1);
         System.out.println("Triangle 2: " + triangle2);
         System.out.println("Are they similar? " + RightTriangle.similar(triangle1, triangle2));
+
+        System.out.println("-----------------LibraryItem Inheritance-----------------");
+        LibraryItem[] items = {new Book("a", "1", "a", 100), new Book("b", "2", "b", 100), new Book("c", "3", "c", 100)};
+        items[0].checkOut(); items[2].checkOut();
+        ArrayList<LibraryItem> availible = availableItems(items);
+        System.out.println("Availible: " + availible);
+        returnAll(items);
+        ArrayList<LibraryItem> availible1 = availableItems(items);
+        System.out.println("Availible after Returned: " + availible1);
     }
 }

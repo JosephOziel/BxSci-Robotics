@@ -53,4 +53,3 @@ public class RightTriangle implements Shape {
         return Math.abs(ratio1 - ratio2) < 1e-9;
     }
 }
-
